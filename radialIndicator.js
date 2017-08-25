@@ -334,8 +334,19 @@
                 ctx.font = weight + " " + fontSize + "px " + cFont;
                 ctx.textAlign = "center";
                 ctx.textBaseline = indOption.textBaseline;
-                ctx.fillText(dispVal, center, center);
+
+                if(this.current_value==indOption.displayNumberSelect&&indOption.isShowSelectSymbol){
+                    
+                    ctx.font =  weight + ' ' + 3* fontSize+ 'px '+ cFont;
+                    ctx.fillText('✔', center, center);
+                }else if(this.current_value==indOption.displayNumberUnSelect&&indOption.isShowUnSelectSymbol){
+                    ctx.fillText('✘', center, center);
+                }else{
+                    ctx.fillText(dispVal, center, center);
+                }
+                
             }
+            
 
             //call onChange callback
             indOption.onChange.call(this.container,val);
@@ -426,6 +437,10 @@
         maxValue: 100, //maximum value
         initValue: 0, //define initial value of indicator,
         interaction: false, //if true it allows to change radial indicator value using mouse or touch interaction
+        displayNumberSelect:100,
+        displayNumberUnSelect:0,
+        isShowSelectSymbol:false,
+        isShowUnSelectSymbol:false,
         onChange: function() {}
     };
 

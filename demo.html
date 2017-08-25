@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#indicatorContainerWrap,#indicatorContainer{
+		    display:inline-block;
+		    position:relative;
+		}
+		#prgLogo{
+		    position:absolute;
+		    width:60px;
+		    height:60px;
+		    margin-top:-30px;
+		    margin-left:-30px;
+		    left: 53px;
+    		top: 53px;
+		}
+	</style>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="demo">
+	<div id="indicatorContainerWrap">
+		<div data-radial-indicator="indicatorOption" chk-img-id="prgLogo" data-radial-indicator-model="indicatorValue" data-radial-indicator-id="indicator1">
+	     	<img src="./radialIndicator.js - A light weight circular indicator _ ignitersworld.com_files/lab_exp.png"  id="prgLogo" style="display: none;" />
+	    </div>
+	</div>
+		<input type="text" ng-model="changeNum">
+	    <button data-ng-click="changeValue()">xxx</button> 
+	 </div>
+	<script src="./jquery.min.js"></script>
+	<script src="./angular.min.js"></script>
+	<script src="radialIndicator.js"></script>
+	<script src="angular.radialIndicator.js"></script>
+	<script>
+		angular.module('myApp', ['radialIndicator'])
+		    .controller('demo', ['$scope','radialIndicatorInstance', function ($scope,radialIndicatorInstance) {
+		        $scope.indicatorOption = {
+		                radius : 20,
+		                percentage :true,
+		                barColor : "#87CEEB",
+		                initValue : 70,
+		                isShowSelectSymbol:true
+		        };
+		        $scope.indicatorValue=0;
+
+		        $scope.changeValue =function() {
+		        	// $scope.indicatorValue = val;
+                    radialIndicatorInstance['indicator1'].animate($scope.changeNum);
+                }
+                        
+		        }]);
+
+	</script>
+</body>
+</html>
