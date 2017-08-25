@@ -11,3 +11,5 @@ Check demo and documentation on <a href="http://ignitersworld.com/lab/radialIndi
 
 <strong>1.1.0</strong>
 - Fixed draw issue on ipad and android devices and added onAnimationComplete callback.
+
+添加了*isShowSelectSymbol* *isShowUnSelectSymbol*配置
